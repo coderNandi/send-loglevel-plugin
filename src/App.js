@@ -1,7 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import React, {useEffect} from "react";
+import "./App.css";
+import log from "loglevel";
 
+import {initiatePlugin} from './util/LogLevelplugin';
 function App() {
+  const sendLogs = (message) => {};
+
+  useEffect(() => {
+    initiatePlugin(log);
+  });
+
+  const pressButton = () => {
+    //console.log("got clicked here");
+    log.info('yu hoooooo')
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +22,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={pressButton}>click me</button>
+        <button onClick={pressButton}>click 2</button>
       </header>
     </div>
   );
